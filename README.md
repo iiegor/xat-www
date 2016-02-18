@@ -1,6 +1,9 @@
 # xat-www
 
 ## Get started
+### Requirements
+- PHP *~5.5.24*
+
 ### Running the development server
 ```sh
 # enter the folder
