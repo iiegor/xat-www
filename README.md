@@ -1,5 +1,6 @@
 # xat-www
 
+## Get started
 ### Running the development server
 ```sh
 # enter the folder
