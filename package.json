@@ -1,0 +1,10 @@
+{
+  "name": "xat-www",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": "iiegor/xat-www",
+  "author": "Iegor Azuaga",
+  "scripts": {
+    "build": "echo \"No scripts yet :(\""
+  }
+}
