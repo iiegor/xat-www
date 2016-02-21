@@ -2,7 +2,7 @@
 
 ## Get started
 ### Requirements
-- PHP *~5.5.24*
+- PHP *~5.5*
 
 ### Running the development server
 ```sh
