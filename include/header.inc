@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf8">
-  <title>xat</title>
+  <title><?php echo $CONF['site_name']; ?></title>
 
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700">
   <link rel="stylesheet" href="<?php echo $SITE; ?>styles/style.css">
