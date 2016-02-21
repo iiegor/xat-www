@@ -1,3 +1,6 @@
+  	</div>
+  </div>
+
   <footer id="footer">
     <div class="container text-centered">
       <a href="https://github.com/iiegor" class="author">made by @iiegor</a>

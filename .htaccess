@@ -1,0 +1,13 @@
+<FilesMatch "\.(inc|sql|sh)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+  # Specific routes
+  # ..
+</IfModule>
