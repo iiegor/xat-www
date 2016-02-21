@@ -1,4 +1,4 @@
-<FilesMatch "\.(inc|sql|sh|json)$">
+<FilesMatch "\.(inc|sql|sh|json|ini)$">
   Order allow,deny
   Deny from all
 </FilesMatch>
@@ -6,8 +6,14 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-  # Specific routes
-  # ..
+  # Site routes
+  RewriteRule ^room(/.*|)$ /room.php?gn=$1 [L]
+
+  # Production assets routes
+  RewriteRule ^a(/.*|)$ /static/css/dist$1 [L]
+  RewriteRule ^b(/.*|)$ /static/js/dist$1 [L]
+
+  # Other
+  RewriteRule ^([^\.]+)$ $1.php [NC,L]
 </IfModule>

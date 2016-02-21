@@ -1,0 +1,90 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var fs = require('fs');
+var uglify = require('uglify-js');
+var cssmin = require('cssmin');
+var del = require('del');
+var ini = require('ini');
+
+process.chdir(path.dirname(__dirname));
+
+function uid() {
+  var S4 = function() {
+    return (Math.floor(((1+Math.random())*0x10000))).toString(16).substring(1)
+  }
+
+  return S4() + S4() + '-' +  S4();
+}
+
+function directoryExists(path) {
+  try {
+    return fs.statSync(path).isDirectory();
+  }
+  catch (err) {
+    return false;
+  }
+}
+
+function ensureDirectoryExistence(filePath) {
+  var dirname = filePath;
+
+  if (!directoryExists(dirname)) {
+    fs.mkdirSync(dirname);
+  }
+}
+
+/**
+ * @info Build configuration
+ */
+var PATHS = {
+  js: 'static/js/dist/',
+  css: 'static/css/dist/',
+  revision: 'static/revision.ini'
+};
+
+/**
+ * @info Load revision file
+ */
+var revision = ini.parse(fs.readFileSync(PATHS.revision, 'utf-8'));
+
+/**
+ * @info Concat and minify javascript source files
+ */
+var js = uglify.minify([
+  'static/js/vendor/sprint.min.js',
+  'static/js/class.js',
+  'static/js/main.js'
+], {
+  mangle: false
+});
+
+del.sync(PATHS.js);
+ensureDirectoryExistence(PATHS.js);
+
+/**
+ * @info Concat and minify stylesheet files
+ */
+var css = cssmin(fs.readFileSync('static/css/style.css', 'utf8'));
+
+del.sync(PATHS.css);
+ensureDirectoryExistence(PATHS.css);
+
+/**
+ * @info Write javascript file
+ */
+var juid = revision.js = uid();
+fs.writeFile(PATHS.js + juid + '.js', js.code, 'utf8', function() {
+  console.log('=> Javascript compressed');
+
+  var cuid = revision.css = uid();
+  fs.writeFile(PATHS.css + cuid + '.css', css, 'utf8', function() {
+    console.log('=> Stylesheet compressed');
+
+    /**
+     * @info Write revision file
+     */
+    fs.writeFileSync(PATHS.revision, ini.stringify(revision));
+  });
+});
+

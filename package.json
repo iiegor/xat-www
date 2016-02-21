@@ -5,6 +5,12 @@
   "repository": "iiegor/xat-www",
   "author": "Iegor Azuaga",
   "scripts": {
-    "build": "echo \"No scripts yet :(\""
+    "build": "node script/build"
+  },
+  "devDependencies": {
+    "cssmin": "^0.4.3",
+    "del": "^2.2.0",
+    "ini": "^1.3.4",
+    "uglify-js": "^2.6.1"
   }
 }

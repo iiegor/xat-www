@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html ng-app="xat">
+<html>
 <head>
   <meta charset="utf8">
   <title><?php echo $CONF['site_name']; ?></title>
 
-  <link rel="stylesheet" href="<?php echo $SITE; ?>static/styles/vendor/angular-material.css">
-  <link rel="stylesheet" href="<?php echo $SITE; ?>static/styles/style.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700">
+  <?php
+  if ($CONF['environment'] === 'production') {
+  ?>
+  <link rel="stylesheet" href="<?php echo $SITECSS; ?>/<?php echo $REV['css']; ?>.css">
+  <?php
+  } else {
+  ?>
+  <link rel="stylesheet" href="<?php echo $SITECSS; ?>/style.css">
+  <?php
+  }
+  ?>
 </head>
-<body ng-controller="<?php echo ucfirst($PAGE) . 'Controller'; ?>">
+<body>
   <header id="view-header" role="banner">
     <nav class="header-nav" role="navigation">
       <div class="inner clearfix">
@@ -26,26 +36,18 @@
     </nav>
 
     <div class="secondary-nav md-whiteframe-2dp">
-      <md-content class="inner">
-        <md-tabs class="tabs" md-no-ink>
-          <md-tab>
-            Home
-          </md-tab>
-
-          <md-tab>
-            Groups
-          </md-tab>
-
-          <md-tab>
-            Store
-          </md-tab>
-        </md-tabs>
-      </md-content>
+      <div class="inner clearfix">
+        <ul class="nav">
+          <li class="nav-item home <?php echo $PAGE == 'home' ? 'active' : '' ?>"><a class="nav-item-link" href="/">Home</a></li>
+          <li class="nav-item groups <?php echo $PAGE == 'groups' ? 'active' : '' ?>"><a class="nav-item-link" href="/groups">Groups</a></li>
+          <li class="nav-item store <?php echo $PAGE == 'store' ? 'active' : '' ?>"><a class="nav-item-link" href="/store">Store</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="header-notice" style="display: block">
+    <div class="header-notice">
       <div class="inner">
-        This site uses third-party cookies, if you continue viewing this site you're accepting our <a href="/terms">terms and conditions</a>. <a class="btn-okay">okay</a>
+        This site uses third-party cookies, if you continue viewing this site you're accepting our <a href="#terms">terms and conditions</a>. <a class="btn-okay">okay</a>
       </div>
     </div>
   </header>

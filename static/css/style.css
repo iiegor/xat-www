@@ -20,7 +20,7 @@ a {
 }
 
 body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -375,22 +375,48 @@ header .header-nav ul.nav > li.active .nav-item-link {
 
 header .secondary-nav {
   position: relative;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
   background-color: #fff;
-  height: 48px;
+  height: 40px;
 }
 
-header .secondary-nav .tabs md-ink-bar {
-  color: #000;
-  background-color: #000;
+header .secondary-nav ul.nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-header .secondary-nav .tabs .md-tab {
-  -webkit-user-select: none;
-  user-select: none;
+header .secondary-nav ul.nav > li {
+  position: relative;
+  float: left;
 }
 
-header .secondary-nav .tabs .md-tab.md-active {
-  color: #000;
+header .secondary-nav ul.nav > li > a {
+  display: block;
+  padding: 12px 0;
+  width: 104px;
+  height: 40px;
+  box-sizing: border-box;
+  text-align: center;
+  color: rgba(0,0,0,0.8);
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+}
+
+header .secondary-nav ul.nav > li.home.active > a,
+header .secondary-nav ul.nav > li.home:hover > a {
+  border-color: #212121;
+}
+
+header .secondary-nav ul.nav > li.groups.active > a,
+header .secondary-nav ul.nav > li.groups:hover > a {
+  border-color: #009688;
+}
+
+header .secondary-nav ul.nav > li.store.active > a,
+header .secondary-nav ul.nav > li.store:hover > a {
+  border-color: #c62828;
 }
 
 header .header-notice {
@@ -407,9 +433,7 @@ header .header-notice .btn-okay {
   border-radius: 2px;
   padding: 4px 12px;
   float: right;
-  top: -3px;
-  -webkit-user-select: none;
-  user-select: none;
+  top: -4px;
 }
 
 header .header-notice .btn-okay:hover {
