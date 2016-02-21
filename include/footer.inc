@@ -7,6 +7,7 @@
     </div>
   </footer>
 
-  <script type="text/javascript" src="<?php echo $SITE; ?>js/app.js"></script>
+  <script src="<?php echo $SITE; ?>static/js/vendor/angular-material.js"></script>
+  <script type="text/javascript" src="<?php echo $SITE; ?>static/js/app.js"></script>
 </body>
 </html>
